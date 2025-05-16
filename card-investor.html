@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR"> <!-- Define o idioma do conteúdo da página como português do Brasil -->
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Define o conjunto de caracteres como UTF-8 para suportar acentos e caracteres especiais -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Configura a escala inicial para dispositivos móveis -->
+    <title>Card de Investidor</title> <!-- Define o título da página que aparece na aba do navegador -->
+    <style>
+        /* Define estilos gerais para todos os elementos */
+        * {
+            margin: 0;
+            /* Remove margens padrão */
+            padding: 0;
+            /* Remove espaçamentos internos padrão */
+            box-sizing: border-box;
+            /* Faz com que padding e border sejam incluídos no tamanho total do elemento */
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            /* Define a fonte principal */
+        }
+
+        /* Define o estilo do corpo da página */
+        body {
+            display: flex;
+            /* Torna o body um container flexível */
+            justify-content: center;
+            /* Centraliza o conteúdo horizontalmente */
+            align-items: center;
+            /* Centraliza o conteúdo verticalmente */
+            min-height: 100vh;
+            /* Define altura mínima de 100% da altura da tela */
+            background-color: #1a1a1a;
+            /* Cor de fundo preta */
+        }
+
+        /* Estilo do cartão */
+        .card {
+            width: 408px;
+            /* Largura fixa do cartão */
+            padding: 24px;
+            /* Espaçamento interno */
+            background-color: white;
+            /* Cor de fundo branca */
+            border-radius: 24px;
+            /* Bordas arredondadas */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            /* Sombra ao redor do cartão */
+        }
+
+        /* Estilo da área do cabeçalho */
+        .header {
+            display: flex;
+            /* Torna o cabeçalho um container flexível */
+            align-items: center;
+            /* Alinha os itens verticalmente */
+            margin-bottom: 24px;
+            /* Espaçamento abaixo do cabeçalho */
+        }
+
+        /* Estilo do avatar (círculo colorido) */
+        .avatar {
+            width: 80px;
+            /* Largura do avatar */
+            height: 80px;
+            /* Altura do avatar */
+            background-color: #f6d365;
+            /* Cor de fundo amarelo claro */
+            border-radius: 50%;
+            /* Torna o elemento circular */
+            margin-right: 16px;
+            /* Espaço à direita do avatar */
+            flex-shrink: 0;
+            /* Impede que o avatar diminua de tamanho */
+        }
+
+        /* Área de informações ao lado do avatar */
+        .info {
+            flex-grow: 1;
+            /* Faz o elemento crescer para ocupar o espaço disponível */
+        }
+
+        /* Nome do investidor */
+        .name {
+            font-size: 24px;
+            /* Tamanho da fonte */
+            font-weight: 600;
+            /* Peso da fonte */
+            color: #333;
+            /* Cor do texto cinza escuro */
+            margin-bottom: 4px;
+            /* Espaçamento abaixo do nome */
+        }
+
+        /* ID do investidor */
+        .id {
+            font-size: 16px;
+            /* Tamanho da fonte */
+            color: #888;
+            /* Cor do texto cinza claro */
+        }
+
+        /* Linha divisória */
+        .divider {
+            height: 1px;
+            /* Altura da linha */
+            background-color: #e0e0e0;
+            /* Cor da linha */
+            margin: 16px 0;
+            /* Espaçamento acima e abaixo da linha */
+        }
+
+        /* Área que exibe o valor investido */
+        .investment {
+            display: flex;
+            /* Torna o container flexível */
+            justify-content: space-between;
+            /* Espaça os elementos */
+            align-items: center;
+            /* Alinha verticalmente */
+            margin-bottom: 24px;
+            /* Espaçamento abaixo */
+        }
+
+        /* Rótulo do valor investido */
+        .investment-label {
+            font-size: 18px;
+            /* Tamanho da fonte */
+            color: #666;
+            /* Cor do texto cinza */
+        }
+
+        /* Valor investido */
+        .investment-value {
+            font-size: 28px;
+            /* Tamanho da fonte */
+            font-weight: 700;
+            /* Peso da fonte */
+            color: #1a365d;
+            /* Cor azul escuro */
+        }
+
+        /* Linha contendo perfil e status lado a lado */
+        .details-row {
+            display: flex;
+            /* Torna o container flexível */
+            justify-content: space-between;
+            /* Espaça os elementos */
+            margin-bottom: 24px;
+            /* Espaçamento abaixo */
+        }
+
+        /* Seção do perfil */
+        .profile-section,
+        .status-section {
+            flex-basis: 48%;
+            /* Define largura de 48% para cada seção */
+        }
+
+        /* Título das seções */
+        .section-title {
+            font-size: 16px;
+            /* Tamanho da fonte */
+            color: #666;
+            /* Cor do texto cinza */
+            margin-bottom: 8px;
+            /* Espaçamento abaixo do título */
+        }
+
+        /* Tag do perfil */
+        .profile-tag {
+            display: inline-block;
+            /* Define como elemento em linha e bloco */
+            padding: 6px 16px;
+            /* Espaçamento interno */
+            background-color: rgba(246, 211, 101, 0.2);
+            /* Cor de fundo amarelo claro */
+            border-radius: 16px;
+            /* Bordas arredondadas */
+            color: #b8860b;
+            /* Cor do texto dourado escuro */
+            font-weight: 500;
+            /* Peso da fonte */
+        }
+
+        /* Tag do status */
+        .status-tag {
+            display: inline-flex;
+            /* Define como flexível em linha */
+            align-items: center;
+            /* Alinha os itens verticalmente */
+            padding: 6px 16px;
+            /* Espaçamento interno */
+            background-color: rgba(72, 187, 120, 0.2);
+            /* Cor de fundo verde claro */
+            border-radius: 16px;
+            /* Bordas arredondadas */
+            color: #38a169;
+            /* Cor do texto verde escuro */
+            font-weight: 500;
+            /* Peso da fonte */
+        }
+
+        /* Adiciona um ícone de check antes do texto da tag de status */
+        .status-tag::before {
+            content: "✓";
+            /* Conteúdo do ícone */
+            margin-right: 4px;
+            /* Espaço à direita do ícone */
+        }
+
+        /* Área do rodapé */
+        .footer {
+            display: flex;
+            /* Torna o container flexível */
+            justify-content: space-between;
+            /* Espaça os elementos */
+            align-items: center;
+            /* Alinha os elementos verticalmente */
+        }
+
+        /* Data da última atualização */
+        .update-date {
+            font-size: 16px;
+            /* Tamanho da fonte */
+            color: #666;
+            /* Cor do texto cinza */
+        }
+
+        /* Link para ver detalhes */
+        .details-link {
+            color: #1a365d;
+            /* Cor azul escuro */
+            font-weight: 500;
+            /* Peso da fonte */
+            text-decoration: none;
+            /* Remove sublinhado */
+            display: flex;
+            /* Torna o link flexível */
+            align-items: center;
+            /* Alinha os itens verticalmente */
+        }
+
+        /* Adiciona uma seta ao lado do link */
+        .details-link::after {
+            content: "›";
+            /* Conteúdo da seta */
+            margin-left: 4px;
+            /* Espaço à esquerda da seta */
+            font-size: 20px;
+            /* Tamanho da seta */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Cartão contendo informações do investidor -->
+    <div class="card">
+        <!-- Cabeçalho com avatar e informações -->
+        <div class="header">
+            <div class="avatar"></div> <!-- Avatar visual do investidor -->
+            <div class="info">
+                <div class="name">Maria Eduarda Santos</div> <!-- Nome do investidor -->
+                <div class="id">ID: 000002</div> <!-- Identificador do investidor -->
+            </div>
+        </div>
+
+        <!-- Seção que exibe o total investido -->
+        <div class="investment">
+            <div class="investment-label">Total investido</div> <!-- Rótulo do valor -->
+            <div class="investment-value">R$ 850.000,00</div> <!-- Valor investido -->
+        </div>
+
+        <div class="divider"></div> <!-- Linha divisória -->
+
+        <!-- Linha com informações de perfil e status -->
+        <div class="details-row">
+            <div class="profile-section">
+                <div class="section-title">Perfil</div> <!-- Título da seção -->
+                <div class="profile-tag">Moderado</div> <!-- Tag com o perfil do investidor -->
+            </div>
+
+            <div class="status-section">
+                <div class="section-title">Status</div> <!-- Título da seção -->
+                <div class="status-tag">Alinhado</div> <!-- Tag com o status do investidor -->
+            </div>
+        </div>
+
+        <div class="divider"></div> <!-- Linha divisória -->
+
+        <!-- Rodapé com data de atualização e link de detalhes -->
+        <div class="footer">
+            <div class="update-date">Última atualização: 06/05/2025</div> <!-- Data da última atualização -->
+            <a href="#" class="details-link">Ver detalhes</a> <!-- Link para mais informações -->
+        </div>
+    </div>
+</body>
+
+</html>
